@@ -62,6 +62,15 @@ public:
 	*/
 	std::vector<minString> join(std::vector<char*> v_str);
 
+	/**
+	* Get pointer to begin of string
+	* @return Pointer to begin of strings.
+	*/
 	char* get_b() { return b; }
+
+	/**
+	* Get pointer to end of string
+	* @return Pointer to end of strings.
+	*/
 	char* get_e() { return e; }
 };

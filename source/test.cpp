@@ -1,7 +1,7 @@
 #include <string>
 #include <assert.h>
 
-#include "minString.h"
+#include "../minString/minString.h"
 
 bool operator==(minString s1, char* s2) {
 	std::string str = s1.get_b();
@@ -60,11 +60,11 @@ void TestBasicString::testSplit(void)
 
 void TestBasicString::testJoin(void)
 {
-	std::vector<char*> v_str = { "hello", "world", "two" };
+	std::vector<char*> v_str = { "hello", "world", "three" };
 	std::vector<minString> v = s->join(v_str);
 	assert(v[0] == "hello");
 	assert(v[1] == "world");
-	assert(v[2] == "two");
+	assert(v[2] == "three");
 }
 
 

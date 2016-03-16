@@ -1,4 +1,4 @@
-#include "minString.h"
+#include "../minString/minString.h"
 
 void minString::print()
 {

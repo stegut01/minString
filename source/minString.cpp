@@ -1,4 +1,5 @@
 #include "../minString/minString.h"
+#include <algorithm>
 
 void minString::print()
 {
@@ -61,7 +62,22 @@ int minString::count(char c)
 	return std::count(b, e, c);
 }
 
+struct counter { 
+	int found;
+	char *search, *original;
+
+	counter(char* c) : found(0), search(c), original(c) {}
+	void operator() (char c) {
+		if(c == *search) {
+			if(std::strlen(++search) == 0)
+				++found;
+		} else search = original;
+	}
+};
+
 int minString::count(char* c)
 {
-	return std::count(b, e, c);
+	counter cnt(c);
+	std::for_each(b, e, cnt);
+	return cnt.found;
 }

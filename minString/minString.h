@@ -66,6 +66,8 @@ public:
 	int count(char c);
 	int count(char* c);
 
+	void sort(std::vector<minString> v);
+
 	/**
 	* Get pointer to begin of string
 	* @return Pointer to begin of strings.

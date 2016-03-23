@@ -24,7 +24,7 @@ public:
 	void testCut2(void);
 	void testSplit(void);
 	//void testJoin(void);
-	void testCount1(void);
+	void testCount(void);
 
 private:
 	minString *s;
@@ -71,10 +71,16 @@ void TestBasicString::testJoin(void)
 	assert(v[2] == "three");
 }*/
 
-void TestBasicString::testCount1(void)
+void TestBasicString::testCount(void)
 {
 	int mycount = s->count('o');
 	assert(mycount == 3);
+
+	mycount = s->count('x');
+	assert(mycount == 0);
+
+	mycount = s->count("wo");
+	//assert(mycount == 2);
 }
 
 
@@ -86,7 +92,7 @@ int main()
 	test.testCut2();
 	test.testSplit();
 	//test.testJoin();
-	test.testCount1();
+	test.testCount();
 	test.tearDown();
 
 	/*

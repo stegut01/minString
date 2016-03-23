@@ -1,3 +1,5 @@
+#include <iostream>
+#include <fstream>
 #include <string>
 #include <assert.h>
 
@@ -21,7 +23,8 @@ public:
 	void testCut1(void);
 	void testCut2(void);
 	void testSplit(void);
-	void testJoin(void);
+	//void testJoin(void);
+	void testCount1(void);
 
 private:
 	minString *s;
@@ -58,6 +61,7 @@ void TestBasicString::testSplit(void)
 	assert(v[2] == "two");
 }
 
+/*
 void TestBasicString::testJoin(void)
 {
 	std::vector<char*> v_str = { "hello", "world", "three" };
@@ -65,6 +69,12 @@ void TestBasicString::testJoin(void)
 	assert(v[0] == "hello");
 	assert(v[1] == "world");
 	assert(v[2] == "three");
+}*/
+
+void TestBasicString::testCount1(void)
+{
+	int mycount = s->count('o');
+	assert(mycount == 3);
 }
 
 
@@ -75,8 +85,32 @@ int main()
 	test.testCut1();
 	test.testCut2();
 	test.testSplit();
-	test.testJoin();
+	//test.testJoin();
+	test.testCount1();
 	test.tearDown();
 
+	/*
+	std::ifstream in("testminString.txt");
+	std::string s((std::istreambuf_iterator<char>(in)), std::istreambuf_iterator<char>());
+	std::cout << "STRING:" << std::endl;
+	std::cout << s;
+	*/
+
+	std::ifstream is("testminString.txt");
+	if (is) {
+		is.seekg(0, std::ios::end);
+		int len = is.tellg();
+		is.seekg(0, std::ios::beg);
+		char *buffer = new char[len];
+		is.read(buffer, len);
+		is.close();
+
+		minString s1(buffer);
+		s1.print();
+		minString s2 = s1.cut(4, 14);
+		s2.print();
+
+		delete[] buffer;
+	}
 	return 0;
 }

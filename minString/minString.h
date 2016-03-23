@@ -24,7 +24,7 @@ public:
 	* Constructor that sets the string to a given value.
 	* @param s Any string.
 	*/
-	minString(char* _b): b(_b), e(NULL) {}
+	minString(char* _b): b(_b), e(b + std::strlen(b)) {}
 
 	/**
 	* Print String
@@ -60,7 +60,11 @@ public:
 	* @param v_str vector of strings.
 	* @return A vector containing the Strings.
 	*/
-	std::vector<minString> join(std::vector<char*> v_str);
+	//std::vector<minString> join(std::vector<char*> v_str);
+
+
+	int count(char c);
+	int count(char* c);
 
 	/**
 	* Get pointer to begin of string

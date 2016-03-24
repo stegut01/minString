@@ -15,6 +15,28 @@ private:
 	char *b, *e;
 
 public:
+	class iterator
+	{
+	public:
+		typedef iterator self_type;
+		typedef char& reference;
+		typedef char* pointer;
+		iterator() {}
+		iterator(pointer ptr) : ptr_(ptr) { }
+		self_type operator=(const self_type& other) { ptr_ = other.ptr_; return *this; }
+		self_type operator++() { ptr_++; return *this; }
+		self_type operator++(int junk) { self_type i = *this; ptr_++; return i; }
+		reference operator*() { return *ptr_; }
+		pointer operator->() { return ptr_; }
+		bool operator==(const self_type& rhs) { return ptr_ == rhs.ptr_; }
+		bool operator!=(const self_type& rhs) { return ptr_ != rhs.ptr_; }
+	private:
+		pointer ptr_;
+	};
+
+	iterator begin() { return b; }
+	iterator end() { return e; }
+
 	/**
 	* Default Constructor.
 	*/
@@ -53,6 +75,11 @@ public:
 	*/
 	std::vector<minString> split(char seperator);
 
+	/**
+	* Split a string into a vector.
+	* @param seperator Character to split.
+	* @param v A vector containing the substrings.
+	*/
 	void split(char seperator, std::vector<minString> *v);
 
 	/**
@@ -62,11 +89,19 @@ public:
 	*/
 	//std::vector<minString> join(std::vector<char*> v_str);
 
-
+	/**
+	* Count charcters in String.
+	* @param c character to count.
+	* @return Number of found characters.
+	*/
 	int count(char c);
-	int count(char* c);
 
-	void sort(std::vector<minString> v);
+	/**
+	* Count substrings in String.
+	* @param c substring to count.
+	* @return Number of found substrings.
+	*/
+	int count(char* c);
 
 	/**
 	* Get pointer to begin of string

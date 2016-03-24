@@ -23,8 +23,8 @@ public:
 	void testCut1(void);
 	void testCut2(void);
 	void testSplit(void);
-	//void testJoin(void);
 	void testCount(void);
+	void testIterator(void);
 
 private:
 	minString *s;
@@ -61,16 +61,6 @@ void TestBasicString::testSplit(void)
 	assert(v[2] == "two");
 }
 
-/*
-void TestBasicString::testJoin(void)
-{
-	std::vector<char*> v_str = { "hello", "world", "three" };
-	std::vector<minString> v = s->join(v_str);
-	assert(v[0] == "hello");
-	assert(v[1] == "world");
-	assert(v[2] == "three");
-}*/
-
 void TestBasicString::testCount(void)
 {
 	int mycount = s->count('o');
@@ -83,6 +73,17 @@ void TestBasicString::testCount(void)
 	//assert(mycount == 2);
 }
 
+void TestBasicString::testIterator(void)
+{
+	minString::iterator i = s->begin();
+	assert(*i == 'h');
+	++i;
+	assert(*i == 'e');
+	i++;
+	assert(*i == 'l');
+	i = s->end();
+	assert(*i == '\0');
+}
 
 int main()
 {
@@ -91,8 +92,8 @@ int main()
 	test.testCut1();
 	test.testCut2();
 	test.testSplit();
-	//test.testJoin();
 	test.testCount();
+	test.testIterator();
 	test.tearDown();
 
 	/*

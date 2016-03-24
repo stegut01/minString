@@ -3,9 +3,9 @@
 
 void minString::print()
 {
-	//std::foreach(b.begin, b.end, putchar);
-	for (char *i = b; i < e; ++i)
+	for (minString::iterator i = (*this).begin(); i != (*this).end(); ++i) {
 		std::cout << *i;
+	}
 	std::cout << std::endl;
 }
 
@@ -81,3 +81,4 @@ int minString::count(char* c)
 	std::for_each(b, e, cnt);
 	return cnt.found;
 }
+
